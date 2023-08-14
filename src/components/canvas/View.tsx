@@ -4,6 +4,7 @@ import { forwardRef, Suspense, useImperativeHandle, useRef } from 'react'
 import { OrbitControls, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
 
+
 export const Common = ({ color }) => (
   <Suspense fallback={null}>
     {color && <color attach='background' args={[color]} />}
@@ -13,6 +14,12 @@ export const Common = ({ color }) => (
     <PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
   </Suspense>
 )
+
+interface ViewProps {
+  children?: React.ReactNode;
+  orbit?: boolean
+  className?: string
+}
 
 const View = forwardRef(({ children, orbit, ...props }, ref) => {
   const localRef = useRef(null)
