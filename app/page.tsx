@@ -23,7 +23,6 @@ const MyPointLight = () => {
   return null;
 };
 
-const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
 const Dog = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Dog), { ssr: false })
 const Character = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Character), { ssr: false })
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
@@ -113,7 +112,7 @@ export default function Page() {
           <View orbit className='relative h-full sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
               <MyPointLight />
-              <Character route='/blob' scale={4} position={[0, -0.6, 0]} />
+              <Character scale={4} position={[0, -0.6, 0]} />
               <Common color={'lightblue'} />
               <FlagPole position={[-5, -3, 0]} />
             </Suspense>
