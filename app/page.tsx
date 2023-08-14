@@ -107,7 +107,7 @@ export default function Page() {
         </div>
         {/* second row */}
         <div className='relative w-full text-center text-gray-500 '>
-          <p className='mb-8 leading-normal'>Use your arrow keys &larr; &rarr; to move the Tiger!</p>
+          <p className='mb-8 leading-normal'>Use your arrow keys &larr; &rarr; to move the Tiger Astronaut!</p>
         </div>
         <div className='relative h-48 w-full '>
           <View orbit className='relative h-full sm:h-48 sm:w-full'>
