@@ -2,8 +2,8 @@ import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
 
 export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
+  title: '2D to 3D Character Animator',
+  description: 'The easiest way to turn your 2D image to a 3D Character. Animate your world and share your stories.',
 }
 
 export default function RootLayout({ children }) {

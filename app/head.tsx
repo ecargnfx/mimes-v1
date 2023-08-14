@@ -1,8 +1,8 @@
-const title = 'React Three Next Starter'
-const url = 'https://react-three-next.vercel.app/'
-const description = 'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'
+const title = '2D to 3D Character Animator'
+const url = 'https://mimes.ai/'
+const description = 'The easiest way to turn your 2D image to a 3D Character. Animate your world and share your stories.'
 const author = 'Author'
-const twitter = '@pmndrs'
+const twitter = '@ecargnfx'
 
 export default function Head() {
   return (
@@ -20,7 +20,7 @@ export default function Head() {
       <meta name='description' content={description} />
       <meta
         name='keywords'
-        content='Software Engineer,Product Manager,Project Manager,Data Scientist,Computer Scientist'
+        content='3D animation, 2D animation, Blender, Unreal Engine, Generative AI, 3D Model, Sketchfab'
       />
       <meta name='robots' content='index,follow' />
       <meta name='distribution' content='web' />
