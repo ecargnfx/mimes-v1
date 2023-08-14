@@ -13,6 +13,7 @@
     "@ducanh2912/next-pwa": "^9.4.0",
     "@react-three/drei": "^9.80.3",
     "@react-three/fiber": "^8.13.6",
+    "@studio-freight/lenis": "^1.0.19",
     "@types/react-dom": "^18.2.7",
     "glsl-random": "^0.0.5",
     "next": "^13.4.0",
