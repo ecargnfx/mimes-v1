@@ -3,9 +3,11 @@ import * as THREE from 'three';
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber';
-import { useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Roboto, Rubik_Maze } from 'next/font/google'
+import VideoPlayer from '@/components/VideoPlayer'
+import FloatingCircles from '@/components/FloatingCircles'
+import { FlagPole } from '@/components/FlagPole'
 
 const rubik = Rubik_Maze({
   weight: '400',
@@ -23,7 +25,7 @@ const MyPointLight = () => {
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
 const Dog = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Dog), { ssr: false })
-const Duck = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Duck), { ssr: false })
+const Character = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Character), { ssr: false })
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
   loading: () => (
@@ -46,6 +48,11 @@ const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mo
 export default function Page() {
   return (
     <>
+
+      <Canvas style={{ position: 'absolute', zIndex: -1 }}>
+        <FloatingCircles />
+      </Canvas>
+
       <div className='mx-auto flex w-full flex-col flex-wrap items-center md:flex-row  lg:w-full'>
         {/* jumbo */}
         <div className='flex w-full flex-col justify-center p-12 text-center md:w-full md:text-center'>
@@ -84,7 +91,6 @@ export default function Page() {
       </div>
 
 
-
       <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
         {/* first row */}
         <div className='relative h-100 w-full sm:w-1/2 md:my-12 md:mb-40'>
@@ -97,25 +103,34 @@ export default function Page() {
           />
         </div>
         <div className='relative my-12 h-100 w-full sm:w-1/2 md:mb-40'>
-          <View orbit className='relative h-full  sm:h-full sm:w-full'>
-            <Suspense fallback={null}>
-              <MyPointLight />
-              <Dog scale={2} position={[0, 0.3, 0]} rotation={[0.0, -0.3, 0]} />
-              <Common color={'darkgray'} />
-            </Suspense>
-          </View>
+          <VideoPlayer src="/video/catwizard-output.mp4" />
         </div>
         {/* second row */}
+        <div className='relative w-full text-center text-gray-500 '>
+          <p className='mb-8 leading-normal'>Use your arrow keys &larr; &rarr; to move the Tiger!</p>
+        </div>
         <div className='relative h-48 w-full '>
           <View orbit className='relative h-full sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
-              <Duck route='/blob' scale={4} position={[0, -0.6, 0]} />
+              <MyPointLight />
+              <Character route='/blob' scale={4} position={[0, -0.6, 0]} />
               <Common color={'lightblue'} />
+              <FlagPole position={[-5, -3, 0]} />
             </Suspense>
           </View>
         </div>
+        {/* third row */}
 
+      </div>
+
+      <div className='mx-auto flex w-full flex-col flex-wrap items-center md:flex-row  lg:w-full'>
+        {/* jumbo */}
+        <div className='flex w-full flex-col justify-center p-12 text-center md:w-full md:text-center'>
+          <p className='mb-8 leading-normal'>Made with &#9829; in SF</p>
+        </div>
       </div>
     </>
   )
 }
+
+
