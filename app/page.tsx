@@ -112,7 +112,7 @@ export default function Page() {
           <View orbit className='relative h-full sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
               <MyPointLight />
-              <Character scale={4} position={[0, -0.6, 0]} />
+              <Character scale={5} position={[0, -0.6, 0]} />
               <Common color={'lightblue'} />
               <FlagPole position={[-5, -3, 0]} />
             </Suspense>
