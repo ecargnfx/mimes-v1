@@ -1,7 +1,25 @@
 'use client'
-
+import * as THREE from 'three';
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber';
+import { useThree } from '@react-three/fiber';
+import { Roboto, Rubik_Maze } from 'next/font/google'
+
+const rubik = Rubik_Maze({
+  weight: '400',
+  subsets: ['latin'],
+})
+
+
+const MyPointLight = () => {
+  const { scene } = useThree();
+  const light = new THREE.PointLight(0xffffff);
+  light.position.set(10, 10, 10);
+  scene.add(light);
+  return null;
+};
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
 const Dog = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Dog), { ssr: false })
@@ -23,59 +41,80 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
 })
 const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Common), { ssr: false })
 
+
+
 export default function Page() {
   return (
     <>
-      <div className='mx-auto flex w-full flex-col flex-wrap items-center md:flex-row  lg:w-4/5'>
+      <div className='mx-auto flex w-full flex-col flex-wrap items-center md:flex-row  lg:w-full'>
         {/* jumbo */}
-        <div className='flex w-full flex-col items-start justify-center p-12 text-center md:w-2/5 md:text-left'>
-          <p className='w-full uppercase'>Next + React Three Fiber</p>
-          <h1 className='my-4 text-5xl font-bold leading-tight'>Next 3D Starter</h1>
-          <p className='mb-8 text-2xl leading-normal'>A minimalist starter for React, React-three-fiber and Threejs.</p>
-        </div>
-
-        <div className='w-full text-center md:w-3/5'>
-          <View className='flex h-96 w-full flex-col items-center justify-center'>
-            <Suspense fallback={null}>
-              <Logo route='/blob' scale={0.6} position={[0, 0, 0]} />
-              <Common />
-            </Suspense>
-          </View>
+        <div className='flex w-full flex-col justify-center p-12 text-center md:w-full md:text-center'>
+          <p className={`${rubik.className} text-2xl`}>mimes.ai</p>
+          <h1 className='my-4 text-5xl font-bold leading-tight text-center'>2D to 3D Character Animator</h1>
+          <p className='mb-8 text-2xl leading-normal'>Animate your world and share your stories</p>
         </div>
       </div>
 
+
+      <div className="mx-auto flex w-full flex-col flex-wrap items-center justify-center md:flex-row  lg:w-4/5">
+        <form action="https://api.web3forms.com/submit" method="POST">
+
+          <input type="hidden" name="access_key" value="928aa7e4-7d32-42bc-a8c7-c82154345c8c" />
+
+          <input
+            className='border-2 border-gray-300 p-2 w-1/2'
+            type="text"
+            name="name"
+            placeholder='Your name'
+            required
+          />
+          <input
+            className='border-2 border-gray-300 p-2 w-1/2'
+            type="email"
+            name="email"
+            placeholder='Your email'
+            required
+          />
+          <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+          <button
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-2 px-4 rounded w-full'
+            type="submit">Sign Up for Waitlist</button>
+
+        </form>
+      </div>
+
+
+
       <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
         {/* first row */}
-        <div className='relative h-48 w-full py-6 sm:w-1/2 md:my-12 md:mb-40'>
-          <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>Events are propagated</h2>
-          <p className='mb-8 text-gray-600'>Drag, scroll, pinch, and rotate the canvas to explore the 3D scene.</p>
+        <div className='relative h-100 w-full sm:w-1/2 md:my-12 md:mb-40'>
+          <Image
+            src="/img/catwizard.png"
+            alt="input image"
+            width={500}
+            height={500}
+            priority
+          />
         </div>
-        <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
-          <View orbit className='relative h-full  sm:h-48 sm:w-full'>
+        <div className='relative my-12 h-100 w-full sm:w-1/2 md:mb-40'>
+          <View orbit className='relative h-full  sm:h-full sm:w-full'>
             <Suspense fallback={null}>
-              <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} />
-              <Common color={'lightpink'} />
+              <MyPointLight />
+              <Dog scale={2} position={[0, 0.3, 0]} rotation={[0.0, -0.3, 0]} />
+              <Common color={'darkgray'} />
             </Suspense>
           </View>
         </div>
         {/* second row */}
-        <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
-          <View orbit className='relative h-full animate-bounce sm:h-48 sm:w-full'>
+        <div className='relative h-48 w-full '>
+          <View orbit className='relative h-full sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
-              <Duck route='/blob' scale={2} position={[0, -1.6, 0]} />
+              <Duck route='/blob' scale={4} position={[0, -0.6, 0]} />
               <Common color={'lightblue'} />
             </Suspense>
           </View>
         </div>
-        <div className='w-full p-6 sm:w-1/2'>
-          <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>Dom and 3D are synchronized</h2>
-          <p className='mb-8 text-gray-600'>
-            3D Divs are renderer through the View component. It uses gl.scissor to cut the viewport into segments. You
-            tie a view to a tracking div which then controls the position and bounds of the viewport. This allows you to
-            have multiple views with a single, performant canvas. These views will follow their tracking elements,
-            scroll along, resize, etc.
-          </p>
-        </div>
+
       </div>
     </>
   )
