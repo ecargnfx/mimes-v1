@@ -84,7 +84,7 @@ export default function Page() {
           <input type="hidden" name="redirect" value="https://web3forms.com/success" />
           <button
             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-2 px-4 rounded w-full'
-            type="submit">Sign Up for Waitlist</button>
+            type="submit">Sign Up for Beta Access</button>
 
         </form>
       </div>
