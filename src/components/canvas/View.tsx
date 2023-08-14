@@ -10,7 +10,7 @@ export const Common = ({ color }) => (
     {color && <color attach='background' args={[color]} />}
     <pointLight position={[20, 30, 10]} />
     <pointLight position={[-10, -10, -10]} />
-    <PerspectiveCamera position={[0, 0, 6]} />
+    {/* <PerspectiveCamera position={[0, 0, 6]} /> */}
   </Suspense>
 )
 
