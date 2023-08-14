@@ -15,15 +15,16 @@ export const Common = ({ color }) => (
   </Suspense>
 )
 
-interface ViewProps {
+type ViewProps = {
   children?: React.ReactNode;
-  orbit?: boolean
-  className?: string
-}
+  orbit?: boolean;
+  className?: string;
+  // ... any other props you expect to pass to View
+};
 
-const View = forwardRef(({ children, orbit, ...props }, ref) => {
-  const localRef = useRef(null)
-  useImperativeHandle(ref, () => localRef.current)
+const View = forwardRef<HTMLDivElement, ViewProps>(({ children, orbit, ...props }, ref) => {
+  const localRef = useRef<HTMLDivElement>(null);
+  useImperativeHandle(ref, () => localRef.current);
 
   return (
     <>
@@ -35,8 +36,9 @@ const View = forwardRef(({ children, orbit, ...props }, ref) => {
         </ViewImpl>
       </Three>
     </>
-  )
-})
-View.displayName = 'View'
+  );
+});
 
-export { View }
+View.displayName = 'View';
+
+export { View };
