@@ -17,6 +17,10 @@
     overflow: hidden;
   }
 
+  body>div:first-child {
+    touch-action: auto !important;
+  }
+
 
 
   .h-100 {
