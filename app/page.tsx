@@ -92,7 +92,7 @@ export default function Page() {
 
       <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
         {/* first row */}
-        <div className='relative h-100 w-full sm:w-1/2 md:my-12 md:mb-40'>
+        <div className='relative w-full sm:w-1/2 md:my-12 md:mb-40'>
           <Image
             src="/img/catwizard.png"
             alt="input image"
@@ -101,7 +101,7 @@ export default function Page() {
             priority
           />
         </div>
-        <div className='relative my-12 h-100 w-full sm:w-1/2 md:mb-40'>
+        <div className='relative my-12 w-full sm:w-1/2 md:mb-40'>
           <VideoPlayer src="/video/catwizard-output.mp4" />
         </div>
         {/* second row */}
