@@ -62,7 +62,7 @@ export default function Page() {
       </div>
 
 
-      <div className="mx-auto flex w-full flex-col flex-wrap items-center justify-center md:flex-row  lg:w-4/5">
+      <div className="mx-auto flex w-full flex-col flex-wrap items-center justify-center md:flex-row px-2 lg:w-4/5">
         <form action="https://api.web3forms.com/submit" method="POST">
 
           <input type="hidden" name="access_key" value="928aa7e4-7d32-42bc-a8c7-c82154345c8c" />

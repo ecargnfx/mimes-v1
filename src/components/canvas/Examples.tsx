@@ -27,7 +27,7 @@ export function Character(props) {
   const { scene } = useGLTF('/tiger-csm-mesh.glb');
 
   const speed = 0.8; // Controls the speed of the wave
-  const amplitude = 0.2; // Controls the height of the wave
+  const amplitude = 0.3; // Controls the height of the wave
 
   useFrame((state) => {
     // Calculate the y position based on a sine wave
